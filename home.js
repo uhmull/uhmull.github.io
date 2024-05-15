@@ -45,6 +45,6 @@ function scheduleInit() {
 
 function show() {
   document.getElementById("schedule").innerHTML = "";
-  let x = document.cookie;
+  let x =document.cookie.split(";")[1];
   document.getElementById("schedule").innerHTML = x;
 }
