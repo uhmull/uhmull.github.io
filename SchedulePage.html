@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="yapity_yappers.css">
+<head>
+  <style>
+    :left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  }
+    .button {
+      border: none;
+      background-color: green;
+      padding: 4px 36px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 6px 1px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class = "left">
+      <button onclick="show()"><b>Generate your Study Schedule</b><button>
+      <div id="schedule"></div>
+    </div>
+  </div>
+  <script src="home.js"></script>
+</body>
+</html>
