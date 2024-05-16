@@ -2,6 +2,46 @@
 <html lang="en">
 <link rel="stylesheet" href="yapity_yappers.css">
 <head>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script>
+    // Initialize Firebase
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "YOUR_DATABASE_URL",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    function scheduleInit() {
+      // Your existing code...
+
+      // Convert the scheduleHTML to a string
+      var scheduleString = scheduleHTML;
+
+      // Get the current user ID
+      var userId = firebase.auth().currentUser.uid;
+
+      // Reference to the Firebase Realtime Database
+      var database = firebase.database();
+
+      // Save the schedule to Firebase
+      firebase.database().ref('users/' + userId).set({
+        schedule: scheduleString
+      }).then(function() {
+        // Redirect to the SchedulePage.html after saving
+        window.location.href = "SchedulePage.html";
+      }).catch(function(error) {
+        // Handle errors
+        console.error("Error saving schedule to Firebase: ", error);
+      });
+    }
+  </script>
+  
   <style>
     :left {
       display: flex;
@@ -12,11 +52,11 @@
     .button {
       border: none;
       background-color: green;
-      padding: 4px 36px;
+      padding: 14px 56px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
+      font-size: 26px;
       margin: 6px 1px;
       transition-duration: 0.4s;
       cursor: pointer;
@@ -25,6 +65,7 @@
 </head>
 <body>
   <div class="container">
+    <img src="SmatStudy_logo (2).png" alt="Girl in a jacket" height="300">
     <div class = "left">
       <button onclick="show()"><b>Generate your Study Schedule</b><button>
       <div id="schedule"></div>

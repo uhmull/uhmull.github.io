@@ -14,9 +14,9 @@ body {
 h1 {
   margin-bottom: 8%;
   text-align: center;
-  font-family: "Fredoka One", cursive;
+  font-family: 'Calibri, 'Trebuchet MS', sans-serif
   color: #000000;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.01em;
 }
 
 p {
