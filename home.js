@@ -32,9 +32,9 @@ function addSubject(){
   subjectNames.push(document.getElementById("subjectName").value)
   subjectGrades.push(document.getElementById("subjectGrade").value)
   subjectDays.push(document.getElementById("subjectTime").value)
-  document.getElementById("subjectName").value = ""
-  document.getElementById("subjectGrade").value = ""
-  document.getElementById("subjectTime").value = ""
+  document.getElementById("subjectName").value = ''
+  document.getElementById("subjectGrade").value = ''
+  document.getElementById("subjectTime").value = ''
 }
 
 
