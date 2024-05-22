@@ -61,58 +61,20 @@
   <div class="wrapper">
     <form>
       <div class="center">
-        <h3> Subject 1 </h3>
+        <h3> Add Subject </h3>
       </div>
-      <input placeholder="Name:" type="text" id="subject1Name" minlength="1"><br>
+      <input placeholder="Name:" type="text" id="subjectName" minlength="1"><br>
       <input placeholder="Percent grade:" type="number" oninput="javascript:if (this.value > 100) this.value = 100;"
-        id="subject1Grade"><br>
+        id="subjectGrade"><br>
       <input placeholder="Days until next test:" type="number"
-        oninput="javascript:if (this.value > 100) this.value = 100;" id="subject1Time"><br>
+        oninput="javascript:if (this.value > 100) this.value = 100;" id="subjectTime"><br>
     </form>
   </div>
-
   <div class="center">
-    <form>
-      <div class="center">
-        <h3> Subject 2 </h3>
-      </div>
-      <input placeholder="Name:" type="text" id="subject2Name" minlength="1"><br>
-      <input placeholder="Percent grade:" type="number" oninput="javascript:if (this.value > 100) this.value = 100;"
-        id="subject2Grade"><br>
-      <input placeholder="Days until next test:" type="number"
-        oninput="javascript:if (this.value > 100) this.value = 100;" id="subject2Time"><br>
-    </form>
+    <button class="button button1" onclick="addSubject()"> <b>Add Subject </b> </button>
   </div>
-
-  <div class="center">
-    <form>
-      <div class="center">
-        <h3> Subject 3 </h3>
-      </div>
-      <input placeholder="Name:" type="text" id="subject3Name" minlength="1"><br>
-      <input placeholder="Percent grade:" type="number" oninput="javascript:if (this.value > 100) this.value = 100;"
-        id="subject3Grade"><br>
-      <input placeholder="Days until next test:" type="number"
-        oninput="javascript:if (this.value > 100) this.value = 100;" id="subject3Time"><br>
-    </form>
-  </div>
-
-  <div class="center">
-    <form>
-      <div class="center">
-        <h3> Subject 4 </h3>
-      </div>
-      <input placeholder="Name:" type="text" id="subject4Name" minlength="1"><br>
-      <input placeholder="Percent grade:" type="number" oninput="javascript:if (this.value > 100) this.value = 100;"
-        id="subject4Grade"><br>
-      <input placeholder="Days until next test:" type="number"
-        oninput="javascript:if (this.value > 100) this.value = 100;" id="subject4Time"><br>
-    </form>
-  </div>
-
   <div class="center">
     <button class="button button1" onclick="scheduleInit()"> <b>Create Schedule </b> </button>
   </div>
 </body>
-
 </html>
