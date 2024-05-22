@@ -9,7 +9,7 @@ let scheduleHTML = "";
 function createStudySchedule(subject, time) {
   let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
   scheduleHTML = "";
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < subjectNames.length; i++) {
     let tempval = time * (subject[i] / tempTotal);
     let tempval2 = tempval - Math.trunc(tempval);
     if (Math.round(tempval) == 0 && tempval2 < 0.25) {
@@ -28,21 +28,21 @@ function createStudySchedule(subject, time) {
   return scheduleHTML;
 }
 
+function addSubject(){
+  subjectNames.push(document.getElementById("subjectName").value)
+  subjectGrades.push(document.getElementById("subjectGrade").value)
+  subjectDays.push(document.getElementById("subjectTime").value)
+  document.getElementById("subjectName").value = ""
+  document.getElementById("subjectGrade").value = ""
+  document.getElementById("subjectTime").value = ""
+}
+
+
 function scheduleInit() {
-  studyFinalValues = [];
-  studyFinalHours = [];
-  subjectNames = [];
-  subjectGrades = [];
-  subjectDays = [];
-  studyTime = 0;
-  scheduleHTML = "";
-  studyTime = Math.round(1 * document.getElementById("hrs").value);
-  for (let i = 0; i < 4; i++) { subjectNames[i] = document.getElementById("subject" + (i + 1) + "Name").value; }
-  for (let i = 0; i < 4; i++) { subjectGrades[i] = Math.abs(document.getElementById("subject" + (i + 1) + "Grade").value) + 1; }
-  for (let i = 0; i < 4; i++) { subjectDays[i] = Math.abs(document.getElementById("subject" + (i + 1) + "Time").value) + 1; }
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < subjectNames.length; i++) {
     studyFinalValues[i] = 1 / (subjectGrades[i] * subjectDays[i]);
   }
+  studyTime = Math.round(1 * document.getElementById("hrs").value);
   document.cookie = createStudySchedule(studyFinalValues, studyTime);
   window.location.href = "SchedulePage.html";
   document.getElementById("schedule").innerHTML = document.cookie;
@@ -52,4 +52,11 @@ function show() {
   document.getElementById("schedule").innerHTML = "";
   let x =document.cookie.split(";")[2];
   document.getElementById("schedule").innerHTML = x;
+  studyFinalValues = [];
+  studyFinalHours = [];
+  subjectNames = [];
+  subjectGrades = [];
+  subjectDays = [];
+  studyTime = 0;
+  scheduleHTML = "";
 }
