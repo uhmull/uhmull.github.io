@@ -5,7 +5,7 @@ let subjectGrades = [];
 let subjectDays = [];
 let studyTime = 0;
 let scheduleHTML = "";
-let i = 0;
+let j = 0;
 
 function createStudySchedule(subject, time) {
   let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
@@ -33,11 +33,11 @@ function addSubject(){
   subjectNames.push(document.getElementById("subjectName").value);
   subjectGrades.push(document.getElementById("subjectGrade").value);
   subjectDays.push(document.getElementById("subjectTime").value);
-  studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
+  studyFinalValues[j] = (1 / (subjectGrades[j] * 1 * 1 * subjectDays[j]));
   document.getElementById("subjectName").value = '';
   document.getElementById("subjectGrade").value = '';
   document.getElementById("subjectTime").value = '';
-  i++;
+  j++;
 }
 
 
