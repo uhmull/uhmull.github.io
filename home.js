@@ -8,11 +8,9 @@ let scheduleHTML = "";
 let j = 0;
 
 function createStudySchedule(subject, time) {
-  let k = 0
   let tempTotal = 0;
-  while(k<subject.length){
-    tempTotal += subject[k]
-    k++
+  for(let k = 0; k<subjectGrades.length; k++){
+    tempTotal = tempTotal + subject[k];
   }
   scheduleHTML = "";
   for (let i = 0; i < subjectNames.length; i++) {
