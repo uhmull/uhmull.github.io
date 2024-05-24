@@ -7,6 +7,9 @@ let studyTime = 0;
 let scheduleHTML = "";
 
 function createStudySchedule(subject, time) {
+  for (let i = 0; i < subjectGrades.length; i++) {
+    studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
+  }
   let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
   scheduleHTML = "";
   for (let i = 0; i < subjectNames.length; i++) {
@@ -39,9 +42,6 @@ function addSubject(){
 
 
 function scheduleInit() {
-  for (let i = 0; i < subjectGrades.length; i++) {
-    studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
-  }
   studyTime = Math.round(1 * document.getElementById("hrs").value);
   document.cookie = createStudySchedule(studyFinalValues, studyTime);
   window.location.href = "SchedulePage.html";
