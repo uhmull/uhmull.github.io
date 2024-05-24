@@ -5,11 +5,9 @@ let subjectGrades = [];
 let subjectDays = [];
 let studyTime = 0;
 let scheduleHTML = "";
+let i = 0;
 
 function createStudySchedule(subject, time) {
-  for (let i = 0; i < subjectGrades.length; i++) {
-    studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
-  }
   let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
   scheduleHTML = "";
   for (let i = 0; i < subjectNames.length; i++) {
@@ -32,12 +30,14 @@ function createStudySchedule(subject, time) {
 }
 
 function addSubject(){
-  subjectNames.push(document.getElementById("subjectName").value)
-  subjectGrades.push(document.getElementById("subjectGrade").value)
-  subjectDays.push(document.getElementById("subjectTime").value)
-  document.getElementById("subjectName").value = ''
-  document.getElementById("subjectGrade").value = ''
-  document.getElementById("subjectTime").value = ''
+  subjectNames.push(document.getElementById("subjectName").value);
+  subjectGrades.push(document.getElementById("subjectGrade").value);
+  subjectDays.push(document.getElementById("subjectTime").value);
+  studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
+  document.getElementById("subjectName").value = '';
+  document.getElementById("subjectGrade").value = '';
+  document.getElementById("subjectTime").value = '';
+  i++;
 }
 
 
