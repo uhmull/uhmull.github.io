@@ -39,8 +39,8 @@ function addSubject(){
 
 
 function scheduleInit() {
-  for (let i = 0; i < subjectNames.length; i++) {
-    studyFinalValues[i] = 1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]);
+  for (let i = 0; i < subjectGrades.length; i++) {
+    studyFinalValues[i] = (1 / (subjectGrades[i] * 1 * 1 * subjectDays[i]));
   }
   studyTime = Math.round(1 * document.getElementById("hrs").value);
   document.cookie = createStudySchedule(studyFinalValues, studyTime);
