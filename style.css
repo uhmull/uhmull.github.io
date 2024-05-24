@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: callibri;
+  font-family: 'Poppins', sans-serif;
 }
 
 html,body{
@@ -15,5 +15,5 @@ html,body{
 }
 
 .subject{
-  
+  font-size: 40 px;
 }
