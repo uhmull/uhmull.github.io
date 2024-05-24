@@ -6,9 +6,9 @@ let subjectDays = [];
 let studyTime = 0;
 let scheduleHTML = "";
 let j = 0;
+let tempTotal = 0;
 
 function createStudySchedule(subject, time) {
-  let tempTotal = 0;
   for(let k = 0; k<subjectGrades.length; k++){
     tempTotal = tempTotal + subject[k];
   }
