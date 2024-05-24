@@ -52,11 +52,4 @@ function show() {
   document.getElementById("schedule").innerHTML = "";
   let x =document.cookie.split(";")[2];
   document.getElementById("schedule").innerHTML = x;
-  studyFinalValues = [];
-  studyFinalHours = [];
-  subjectNames = [];
-  subjectGrades = [];
-  subjectDays = [];
-  studyTime = 0;
-  scheduleHTML = "";
 }
