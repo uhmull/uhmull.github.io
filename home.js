@@ -8,7 +8,12 @@ let scheduleHTML = "";
 let j = 0;
 
 function createStudySchedule(subject, time) {
-  let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
+  let k = 0
+  let tempTotal = 0;
+  while(k<subject.length){
+    tempTotal += subject[k]
+    k++
+  }
   scheduleHTML = "";
   for (let i = 0; i < subjectNames.length; i++) {
     let tempval = time * (subject[i] / tempTotal);
