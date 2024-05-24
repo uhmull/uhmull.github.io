@@ -5,39 +5,47 @@ let subjectGrades = [];
 let subjectDays = [];
 let studyTime = 0;
 let scheduleHTML = "";
+let j = 0;
+let tempTotal = 0;
 
 function createStudySchedule(subject, time) {
-  let tempTotal = subject[0] + subject[1] + subject[2] + subject[3];
+  for(let k = 0; k<subjectGrades.length; k++){
+    tempTotal = tempTotal + subject[k];
+  }
   scheduleHTML = "";
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < subjectNames.length; i++) {
     let tempval = time * (subject[i] / tempTotal);
-    if (tempval < 1) {
-      tempval = 1;
+    let tempval2 = tempval - Math.trunc(tempval);
+    if (Math.round(tempval) == 0 && tempval2 < 0.25) {
+      studyFinalHours[i] = 0;
+      scheduleHTML += '<div class = "subject"> You dont need to study ' + subjectNames[i] + '</div>';
     }
-    else{
-      tempval = Math.round(tempval);
-    }
-    studyFinalHours[i] = tempval;
-    scheduleHTML += '<div class = "subject"> Study ' + subjectNames[i] + ' for ' + studyFinalHours[i] + ' hours </div>';
+    else if (tempval2 > 0.25 && tempval2 < 0.75) {
+        studyFinalHours[i] = Math.floor(tempval) + 0.5;
+        scheduleHTML += '<div class = "subject"> Study ' + subjectNames[i] + ' for ' + studyFinalHours[i] + ' hours </div>';
+      }
+      else {
+        studyFinalHours[i] = Math.round(tempval);
+        scheduleHTML += '<div class = "subject"> Study ' + subjectNames[i] + ' for ' + studyFinalHours[i] + ' hours </div>';
+      }
   }
   return scheduleHTML;
 }
 
+function addSubject(){
+  subjectNames.push(document.getElementById("subjectName").value);
+  subjectGrades.push(document.getElementById("subjectGrade").value);
+  subjectDays.push(document.getElementById("subjectTime").value);
+  studyFinalValues[j] = (1 / (subjectGrades[j] * 1 * 1 * subjectDays[j]));
+  document.getElementById("subjectName").value = '';
+  document.getElementById("subjectGrade").value = '';
+  document.getElementById("subjectTime").value = '';
+  j++;
+}
+
+
 function scheduleInit() {
-  studyFinalValues = [];
-  studyFinalHours = [];
-  subjectNames = [];
-  subjectGrades = [];
-  subjectDays = [];
-  studyTime = 0;
-  scheduleHTML = "";
-  studyTime = 1 * document.getElementById("hrs").value;
-  for (let i = 0; i < 4; i++) { subjectNames[i] = document.getElementById("subject" + (i + 1) + "Name").value; }
-  for (let i = 0; i < 4; i++) { subjectGrades[i] = Math.abs(document.getElementById("subject" + (i + 1) + "Grade").value) + 1; }
-  for (let i = 0; i < 4; i++) { subjectDays[i] = Math.abs(document.getElementById("subject" + (i + 1) + "Time").value) + 1; }
-  for (let i = 0; i < 4; i++) {
-    studyFinalValues[i] = 1 / (subjectGrades[i] * subjectDays[i]);
-  }
+  studyTime = Math.round(1 * document.getElementById("hrs").value);
   document.cookie = createStudySchedule(studyFinalValues, studyTime);
   window.location.href = "SchedulePage.html";
   document.getElementById("schedule").innerHTML = document.cookie;

@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', calibri;
   background: linear-gradient(to right, #9fd0a7, #98d0e1);
 }
 
@@ -36,6 +36,7 @@ body {
   border-radius: 5px;
   color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', calibri;
 }
 
 .button:hover {
@@ -47,6 +48,8 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', calibri;
+  font-size: 30 px;
 }
 
 .left {
