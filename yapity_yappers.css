@@ -22,20 +22,20 @@ body {
   text-align: center;
 }
 
-button {
-    border: none;
-    color: white;
-    padding: 4px 36px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 6px 1px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: #08be7b;
-    color: black;
-    border: 2px solid #04AA6D;
+.button {
+  border: none;
+  background-color: green;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 20px 0;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
