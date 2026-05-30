@@ -1,759 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-grid {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 0 22px;
+      padding-top: 16px;
+    }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    /* ── Left column: stacked polaroids ── */
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-:root{
-  --cream:#F5F0E8;--cream2:#EDE6D6;--cream3:#E0D5C0;--cream4:#D4C9B0;
-  --kraft:#C8A882;--kraft2:#B8956E;--kraft3:#D4B896;
-  --matcha:#7A9E7E;--matcha2:#A8C5A0;--matcha3:#D4E6D0;--matcha4:#4A6B4E;
-  --pink:#D4849A;--pink2:#EBB8C4;--pink3:#F5DDE4;--pink4:#9E4D63;
-  --brown:#7A5C3E;--brown2:#A0826A;--ink:#2C2118;--ink2:#5C4A38;
-  --sticky:#FFF8DC;--sticky2:#F5EDBE;
-}
+    .pol1 {
+      transform: rotate(-2.5deg);
+      margin-left: 5px;
+      width: 126px;
+      z-index: 3; position: relative;
+    }
+    .pol1 .polaroid-img { width: 112px; height: 112px; font-size: 0; }
 
-body{
-  font-family:'Caveat',cursive;
-  background-color:#C4B49A;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(122,158,126,0.15) 0%,transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(212,132,154,0.12) 0%,transparent 50%),
-    repeating-linear-gradient(45deg,rgba(0,0,0,0.015) 0,rgba(0,0,0,0.015) 1px,transparent 1px,transparent 8px);
-  min-height:100vh;
-  padding:16px 8px 40px;
-  display:flex;flex-direction:column;align-items:center;
-}
+    .pol2 {
+      transform: rotate(2deg);
+      margin-top: -10px; margin-left: 13px;
+      width: 112px;
+      z-index: 2; position: relative;
+    }
+    .pol2 .polaroid-img { width: 98px; height: 98px; font-size: 0; }
 
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:
-    radial-gradient(ellipse 1px 1px at 15% 25%, rgba(122,92,62,0.12) 100%, transparent),
-    radial-gradient(ellipse 1px 1px at 45% 60%, rgba(122,92,62,0.08) 100%, transparent),
-    radial-gradient(ellipse 1px 1px at 75% 35%, rgba(122,92,62,0.1) 100%, transparent),
-    radial-gradient(ellipse 1px 1px at 30% 80%, rgba(122,92,62,0.07) 100%, transparent);
-  background-size:80px 80px, 60px 60px, 90px 90px, 70px 70px;
-  pointer-events:none;z-index:0;
-}
+    .pol3 {
+      transform: rotate(-1.2deg);
+      margin-top: -8px; margin-left: 4px;
+      width: 102px;
+      z-index: 1; position: relative;
+    }
+    .pol3 .polaroid-img { width: 88px; height: 80px; font-size: 0; }
 
-.site{position:relative;z-index:1;width:100%;max-width:680px;}
+    .polaroid:hover { transform: rotate(0deg) scale(1.05) !important; }
 
-/* ── HEADER ── */
-.header-pin{
-  position:relative;
-  text-align:center;
-  margin-bottom:6px;
-}
+    /* ── Right column ── */
+    .about-right { position: relative; }
 
-.header-paper{
-  display:inline-block;
-  background:var(--cream);
-  padding:14px 40px 16px;
-  position:relative;
-  transform:rotate(-0.5deg);
-  box-shadow:2px 3px 8px rgba(0,0,0,0.15),4px 6px 0 rgba(122,92,62,0.1);
-}
+    .name-card {
+      background: white;
+      border: 1.5px solid var(--cream3);
+      border-radius: 4px;
+      padding: 14px 16px 13px;
+      box-shadow: 2px 3px 0 var(--cream3);
+      transform: rotate(0.25deg);
+      position: relative;
+      margin-bottom: 10px;
+    }
 
-.header-paper::after{
-  content:'';
-  position:absolute;bottom:-8px;left:0;right:0;height:10px;
-  background:var(--cream);
-  clip-path:polygon(0% 0%,2% 100%,4% 20%,6% 90%,8% 10%,10% 80%,12% 5%,14% 85%,16% 15%,18% 95%,20% 0%,22% 90%,24% 10%,26% 100%,28% 5%,30% 85%,32% 20%,34% 100%,36% 0%,38% 90%,40% 15%,42% 95%,44% 5%,46% 80%,48% 20%,50% 100%,52% 10%,54% 85%,56% 0%,58% 95%,60% 20%,62% 90%,64% 5%,66% 100%,68% 15%,70% 80%,72% 0%,74% 90%,76% 10%,78% 100%,80% 5%,82% 85%,84% 20%,86% 95%,88% 10%,90% 80%,92% 0%,94% 90%,96% 15%,98% 85%,100% 0%,100% 100%,0% 100%);
-}
+    .name-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 700;
+      color: var(--ink); line-height: 1.1;
+    }
 
-.pin{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  width:16px;height:16px;border-radius:50%;
-  background:radial-gradient(circle at 40% 35%,#e8c4c4,var(--pink));
-  box-shadow:0 2px 4px rgba(0,0,0,0.3);
-  z-index:3;
-}
-.pin::after{
-  content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
-  width:3px;height:8px;background:rgba(0,0,0,0.25);border-radius:0 0 2px 2px;
-}
+    .name-card .role {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 15px; color: var(--pink);
+      margin-top: 5px;
+    }
 
-.header-title{
-  font-family:'Playfair Display',serif;
-  font-size:26px;font-weight:600;color:var(--ink);
-  letter-spacing:0.02em;
-}
-.header-sub{
-  font-family:'IM Fell English',serif;font-style:italic;
-  font-size:14px;color:var(--brown2);margin-top:2px;
-}
+    .name-card .bio {
+      font-family: 'Lora', serif;
+      font-size: 14px; line-height: 1.8;
+      color: var(--ink2); margin-top: 10px;
+    }
 
-.washi-h{
-  position:absolute;
-  height:16px;border-radius:2px;
-  pointer-events:none;
-}
-.washi-h.left{
-  left:-20px;top:12px;width:60px;transform:rotate(-8deg);
-  background:repeating-linear-gradient(90deg,rgba(168,197,160,0.7) 0,rgba(168,197,160,0.7) 8px,rgba(212,132,154,0.5) 8px,rgba(212,132,154,0.5) 16px);
-}
-.washi-h.right{
-  right:-20px;top:8px;width:60px;transform:rotate(6deg);
-  background:repeating-linear-gradient(90deg,rgba(212,132,154,0.6) 0,rgba(212,132,154,0.6) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);
-}
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--matcha3);
+      border: 1.5px solid var(--matcha2);
+      border-radius: 20px;
+      padding: 3px 13px;
+      font-family: 'Lora', serif;
+      font-size: 13px; color: var(--matcha4);
+      margin-top: 11px;
+    }
+    .blink {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--matcha);
+      animation: blink 1.6s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
 
-/* ── NAV ── */
-.nav-tabs{
-  display:flex;gap:4px;padding:0 8px;
-  position:relative;z-index:2;
-}
-.nav-tab{
-  padding:8px 18px;
-  background:var(--cream2);
-  border:2px solid var(--cream4);
-  border-bottom:none;
-  border-radius:8px 8px 0 0;
-  font-family:'Caveat',cursive;font-size:16px;
-  color:var(--ink2);cursor:pointer;
-  transition:all 0.2s;
-  position:relative;top:3px;
-  display:flex;align-items:center;gap:5px;
-}
-.nav-tab.active{
-  background:var(--cream);
-  color:var(--brown);font-weight:600;
-  top:0;border-color:var(--cream3);
-  box-shadow:0 -2px 8px rgba(122,92,62,0.08);
-}
-.nav-tab:hover:not(.active){background:var(--cream);top:1px;}
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .stat-box:nth-child(1) { transform: rotate(-0.8deg); }
+    .stat-box:nth-child(2) { transform: rotate(0.5deg); }
+    .stat-box:nth-child(3) { transform: rotate(-0.3deg); }
 
-/* ── BOARD ── */
-.board{
-  background:var(--cream);
-  border:3px solid var(--cream4);
-  border-radius:0 12px 12px 12px;
-  padding:20px;
-  box-shadow:0 6px 24px rgba(0,0,0,0.12),inset 0 1px 0 rgba(255,255,255,0.6);
-  position:relative;
-  min-height:560px;
-  overflow:hidden;
-}
+    .tags-section { margin-top: 12px; }
+    .tags-label {
+      font-family: 'Lora', serif;
+      font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown2); margin-bottom: 6px;
+    }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
 
-.board::before{
-  content:'';position:absolute;inset:0;
-  background-image:repeating-linear-gradient(
-    0deg,transparent,transparent 26px,rgba(122,92,62,0.06) 27px
-  );
-  pointer-events:none;
-}
+    .sticky-note {
+      transform: rotate(1.8deg);
+      margin-top: 10px;
+    }
 
-.page{display:none;animation:scrappop 0.5s ease forwards;}
-.page.active{display:block;}
-@keyframes scrappop{from{opacity:0;transform:scale(0.97) rotate(-0.3deg);}to{opacity:1;transform:scale(1) rotate(0deg);}}
-
-/* ── REUSABLE ELEMENTS ── */
-.tape{
-  position:absolute;height:18px;border-radius:2px;
-  pointer-events:none;z-index:5;opacity:0.85;
-}
-.tape.h{background:repeating-linear-gradient(90deg,rgba(168,197,160,0.7) 0,rgba(168,197,160,0.7) 10px,rgba(245,221,228,0.7) 10px,rgba(245,221,228,0.7) 20px);}
-.tape.p{background:repeating-linear-gradient(90deg,rgba(212,132,154,0.65) 0,rgba(212,132,154,0.65) 10px,rgba(245,240,232,0.8) 10px,rgba(245,240,232,0.8) 20px);}
-.tape.m{background:repeating-linear-gradient(90deg,rgba(122,158,126,0.6) 0,rgba(122,158,126,0.6) 12px,rgba(168,197,160,0.5) 12px,rgba(168,197,160,0.5) 22px);}
-.tape.stripe{background:repeating-linear-gradient(45deg,rgba(212,132,154,0.4) 0,rgba(212,132,154,0.4) 5px,rgba(245,240,232,0.8) 5px,rgba(245,240,232,0.8) 10px);}
-
-.sticky{
-  background:var(--sticky);
-  border-bottom:3px solid var(--sticky2);
-  padding:10px 12px;
-  font-family:'Caveat',cursive;
-  font-size:14px;color:var(--ink2);
-  line-height:1.5;
-  box-shadow:2px 3px 6px rgba(0,0,0,0.12),inset 0 -1px 0 rgba(0,0,0,0.05);
-  position:relative;
-}
-.sticky::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:rgba(0,0,0,0.06);
-}
-.sticky b{color:var(--brown);font-weight:700;}
-
-.polaroid{
-  background:white;
-  padding:7px 7px 24px;
-  box-shadow:2px 3px 8px rgba(0,0,0,0.14),0 1px 0 rgba(0,0,0,0.06);
-  display:inline-block;position:relative;
-}
-.polaroid-img{
-  background:var(--cream2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:36px;
-  overflow:hidden;
-}
-.polaroid-cap{
-  position:absolute;bottom:5px;left:0;right:0;
-  text-align:center;font-family:'Caveat',cursive;
-  font-size:12px;color:var(--ink2);
-}
-
-.clip{
-  position:absolute;width:16px;height:28px;
-  border:3px solid var(--cream4);
-  border-radius:8px 8px 0 0;
-  border-bottom:none;
-  box-shadow:inset 0 0 0 2px var(--cream3);
-  z-index:6;
-}
-
-.sticker{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:28px;height:28px;
-  border-radius:50%;font-size:14px;
-  background:var(--pink3);border:1.5px solid var(--pink2);
-  position:absolute;z-index:6;
-  box-shadow:0 1px 3px rgba(0,0,0,0.1);
-}
-
-.stamp{
-  display:inline-block;
-  border:2.5px solid currentColor;
-  padding:3px 10px;
-  font-family:'Playfair Display',serif;
-  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
-  transform:rotate(-2deg);
-  opacity:0.75;
-}
-
-/* ── ABOUT PAGE ── */
-.about-layout{
-  display:grid;
-  grid-template-columns:155px 1fr;
-  gap:0;
-  position:relative;min-height:500px;
-}
-
-.about-left{
-  padding-top:8px;
-  display:flex;flex-direction:column;gap:0;
-  align-items:flex-start;
-  position:relative;
-}
-
-.pol1{transform:rotate(-3deg);margin-left:4px;z-index:3;position:relative;width:120px;}
-.pol1 .polaroid-img{width:106px;height:106px;}
-.pol2{transform:rotate(2.5deg);margin-top:-12px;margin-left:14px;z-index:2;position:relative;width:110px;}
-.pol2 .polaroid-img{width:96px;height:96px;}
-.pol3{transform:rotate(-1.5deg);margin-top:-8px;margin-left:6px;z-index:1;position:relative;width:100px;}
-.pol3 .polaroid-img{width:86px;height:80px;}
-
-.pol-tape{
-  position:absolute;height:14px;width:44px;border-radius:2px;
-  z-index:10;pointer-events:none;opacity:0.85;
-}
-
-.polaroid:hover{transform:rotate(0deg) scale(1.04)!important;z-index:20;box-shadow:4px 6px 12px rgba(0,0,0,0.18);}
-
-.social-stack{margin-top:10px;display:flex;flex-direction:column;gap:5px;}
-.soc-btn{
-  display:flex;align-items:center;gap:7px;
-  padding:6px 10px;
-  background:var(--cream2);
-  border:1.5px solid var(--cream3);
-  border-radius:4px;
-  font-family:'Caveat',cursive;font-size:15px;color:var(--ink2);
-  cursor:pointer;width:130px;
-  transform:rotate(-1deg);
-  transition:transform 0.2s,background 0.2s;
-  box-shadow:1px 2px 3px rgba(0,0,0,0.07);
-}
-.soc-btn:nth-child(2n){transform:rotate(0.8deg);}
-.soc-btn:hover{background:var(--pink3);transform:rotate(0) translateX(3px)!important;}
-.soc-icon{
-  width:20px;height:20px;border-radius:3px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;flex-shrink:0;color:white;
-}
-
-.about-right{padding:4px 0 0 16px;position:relative;}
-
-.name-block{
-  background:white;
-  border:1.5px solid var(--cream3);
-  border-radius:4px;
-  padding:12px 14px 10px;
-  position:relative;
-  box-shadow:2px 3px 0 var(--cream3);
-  margin-bottom:2px;
-  transform:rotate(0.3deg);
-}
-
-.name-block h1{
-  font-family:'Playfair Display',serif;
-  font-size:24px;font-weight:600;color:var(--ink);
-  line-height:1.1;
-}
-.name-block .role{
-  font-family:'IM Fell English',serif;font-style:italic;
-  font-size:14px;color:var(--pink);margin-top:3px;
-}
-.name-block p{
-  font-size:14px;line-height:1.6;color:var(--ink2);margin-top:8px;
-  font-family:'Caveat',cursive;
-}
-
-.status-note{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--matcha3);border:1.5px solid var(--matcha2);
-  border-radius:20px;padding:3px 12px;
-  font-family:'Caveat',cursive;font-size:13px;color:var(--matcha4);
-  margin-top:8px;
-}
-.blink{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--matcha);
-  animation:blink 1.6s ease-in-out infinite;
-}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
-
-.quote-strip{
-  background:var(--pink3);
-  border-left:4px solid var(--pink);
-  padding:8px 12px;
-  font-family:'IM Fell English',serif;font-style:italic;
-  font-size:14px;color:var(--ink2);line-height:1.6;
-  margin-top:6px;
-  transform:rotate(-0.4deg);
-  position:relative;
-}
-
-.tags-block{margin-top:8px;}
-.tag-label{font-family:'Caveat',cursive;font-size:13px;color:var(--brown2);margin-bottom:4px;}
-.tags{display:flex;flex-wrap:wrap;gap:5px;}
-.tag{
-  font-family:'Caveat',cursive;font-size:14px;
-  padding:3px 11px;border-radius:14px;
-  animation:tagIn 0.4s ease backwards;
-}
-.tag.m{background:var(--matcha3);border:1.5px solid var(--matcha2);color:var(--matcha4);}
-.tag.p{background:var(--pink3);border:1.5px solid var(--pink2);color:var(--pink4);}
-.tag.c{background:var(--cream2);border:1.5px solid var(--cream3);color:var(--brown);}
-@keyframes tagIn{from{opacity:0;transform:scale(0.7) rotate(-5deg);}to{opacity:1;transform:scale(1) rotate(0);}}
-
-.sticky-float{
-  transform:rotate(2.5deg);
-  margin-top:10px;
-  box-shadow:3px 4px 8px rgba(0,0,0,0.1);
-}
-
-.stat-row{display:flex;gap:8px;margin-top:14px;}
-.stat-box{
-  flex:1;text-align:center;padding:10px 6px;
-  background:white;border:1.5px solid var(--cream3);border-radius:4px;
-  box-shadow:1px 2px 0 var(--cream3);
-}
-.stat-box:nth-child(1){transform:rotate(-1.2deg);}
-.stat-box:nth-child(2){transform:rotate(0.8deg);}
-.stat-box:nth-child(3){transform:rotate(-0.5deg);}
-.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;}
-.stat-label{font-family:'Caveat',cursive;font-size:12px;color:var(--ink2);}
-
-.deco{position:absolute;pointer-events:none;z-index:0;opacity:0.18;font-size:18px;}
-
-/* ── PROJECTS PAGE ── */
-.proj-grid-wrap{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  padding:8px 4px;
-}
-
-.proj-card{
-  background:white;
-  border:1.5px solid var(--cream3);
-  border-radius:2px;
-  position:relative;
-  box-shadow:2px 3px 6px rgba(0,0,0,0.1);
-  overflow:hidden;
-}
-.proj-card .proj-thumb{
-  display:flex;align-items:center;justify-content:center;
-  font-size:32px;height:70px;
-}
-.pt1{background:linear-gradient(135deg,var(--matcha3),var(--cream2));}
-.pt2{background:linear-gradient(135deg,var(--pink3),var(--cream2));}
-.pt3{background:linear-gradient(135deg,var(--cream2),var(--matcha3));}
-.pt4{background:linear-gradient(135deg,var(--pink3),var(--matcha3));}
-.pt5{background:linear-gradient(135deg,var(--matcha3),var(--pink3));}
-
-.proj-body{padding:8px 10px 10px;}
-.proj-cat{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--matcha);font-family:'Caveat',cursive;margin-bottom:2px;}
-.proj-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2;}
-.proj-desc{font-size:13px;line-height:1.5;color:var(--ink2);font-family:'Caveat',cursive;margin-bottom:5px;}
-.chips{display:flex;flex-wrap:wrap;gap:3px;}
-.chip{font-size:11px;padding:2px 7px;border-radius:10px;background:var(--cream2);border:1px solid var(--cream3);color:var(--ink2);font-family:'Caveat',cursive;}
-
-.proj-card:nth-child(1){transform:rotate(-1.5deg);}
-.proj-card:nth-child(2){transform:rotate(1deg);}
-.proj-card:nth-child(3){transform:rotate(0.5deg);}
-.proj-card:nth-child(4){transform:rotate(-0.8deg);}
-.proj-card:nth-child(5){transform:rotate(1.2deg);grid-column:span 2;}
-.proj-card:hover{transform:rotate(0) translateY(-3px)!important;z-index:5;box-shadow:4px 8px 16px rgba(0,0,0,0.14);}
-.proj-card:nth-child(5) .proj-thumb{height:90px;}
-.proj-card:nth-child(5){display:grid;grid-template-columns:1fr 1fr;}
-
-.proj-card::before{
-  content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
-  width:32px;height:14px;border-radius:0 0 3px 3px;z-index:2;
-}
-.proj-card:nth-child(odd)::before{background:rgba(168,197,160,0.65);}
-.proj-card:nth-child(even)::before{background:rgba(212,132,154,0.5);}
-
-/* ── RESUME PAGE ── */
-.res-top-paper{
-  background:var(--cream2);
-  border:1.5px solid var(--cream3);
-  padding:14px 16px;
-  margin-bottom:14px;
-  position:relative;
-  transform:rotate(-0.4deg);
-  box-shadow:2px 3px 0 var(--cream3);
-}
-.res-top-paper::after{
-  content:'CURRICULUM VITAE';
-  position:absolute;top:8px;right:12px;
-  font-family:'Playfair Display',serif;
-  font-size:9px;letter-spacing:0.2em;
-  color:var(--cream4);opacity:0.7;
-}
-.res-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);}
-.res-role{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--pink4);margin-top:2px;}
-.res-meta{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;}
-.res-meta span{font-family:'Caveat',cursive;font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:4px;}
-
-.res-sec-label{
-  font-family:'Caveat',cursive;font-size:18px;font-weight:600;
-  color:var(--matcha4);margin-bottom:8px;
-  display:flex;align-items:center;gap:8px;
-}
-.res-sec-label::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--matcha2),transparent);}
-
-.res-entry{
-  padding:8px 10px 8px 14px;
-  border-left:3px solid var(--cream3);
-  margin-bottom:8px;background:white;
-  border-radius:0 6px 6px 0;
-  border-top:1px solid var(--cream3);
-  border-right:1px solid var(--cream3);
-  border-bottom:1px solid var(--cream3);
-  transition:border-left-color 0.2s;
-  box-shadow:1px 2px 3px rgba(0,0,0,0.04);
-}
-.res-entry:hover{border-left-color:var(--pink);}
-.res-entry-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
-.res-etitle{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--ink);}
-.res-eorg{font-family:'Caveat',cursive;font-style:italic;font-size:14px;color:var(--brown2);margin-top:1px;}
-.res-edate{font-size:13px;color:var(--matcha);font-family:'Caveat',cursive;white-space:nowrap;}
-.res-ebullets{margin-top:5px;}
-.res-ebullets li{list-style:none;padding-left:14px;position:relative;font-family:'Caveat',cursive;font-size:13px;color:var(--ink2);line-height:1.6;}
-.res-ebullets li::before{content:'◇';position:absolute;left:0;color:var(--pink);font-size:9px;top:3px;}
-
-.skills-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-.sk{font-family:'Caveat',cursive;font-size:14px;padding:4px 12px;border-radius:14px;border:1.5px solid;transition:transform 0.2s;cursor:default;}
-.sk:hover{transform:rotate(-2deg) scale(1.05);}
-.sk.m{background:var(--matcha3);border-color:var(--matcha2);color:var(--matcha4);}
-.sk.p{background:var(--pink3);border-color:var(--pink2);color:var(--pink4);}
-.sk.c{background:var(--cream2);border-color:var(--cream3);color:var(--brown);}
-
-.dl-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:12px;padding:9px 20px;
-  background:var(--matcha);color:white;border:none;border-radius:4px;
-  font-family:'Caveat',cursive;font-size:16px;cursor:pointer;
-  transform:rotate(-1deg);
-  transition:all 0.2s;box-shadow:2px 3px 0 var(--matcha4);
-}
-.dl-btn:hover{transform:rotate(0) translateY(-2px);box-shadow:3px 5px 0 var(--matcha4);}
-
-.footer{
-  text-align:center;margin-top:10px;
-  font-family:'IM Fell English',serif;font-style:italic;
-  font-size:13px;color:var(--brown2);
-  letter-spacing:0.06em;
-}
-</style>
+    /* Photo placeholder styling */
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      background: var(--cream2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px;
+    }
+    .photo-placeholder span {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 11px; color: var(--brown2);
+      text-align: center; padding: 0 4px;
+    }
+  </style>
 </head>
 <body>
+  <div class="site">
 
-<div class="site">
+    <header class="site-header">
+      <div class="pin"></div>
+      <div class="header-paper">
+        <div class="header-tape left"></div>
+        <div class="header-tape right"></div>
+        <h1 class="site-name">Your Name</h1>
+        <p class="site-tagline">Designer &amp; Developer</p>
+      </div>
+    </header>
 
-  <!-- Header -->
-  <div class="header-pin">
-    <div class="pin"></div>
-    <div class="header-paper">
-      <div class="washi-h left"></div>
-      <div class="washi-h right"></div>
-      <h1 class="header-title"> Welcome to Amulya's Portfolio!</h1>
-      <p class="header-sub"> Claude was used in the process of vibe coding the aesthetics, structure, button functionality, and layout of the website, however all content in the portfolio was written by Amulya Medarametla.</p>
-    </div>
-  </div>
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab active">About</a>
+      <a href="projects.html" class="nav-tab">Projects</a>
+      <a href="resume.html" class="nav-tab">Resume</a>
+    </nav>
 
-  <!-- Nav -->
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="go('about')" id="tab-about">🌿 About Me</button>
-    <button class="nav-tab" onclick="go('projects')" id="tab-projects">📎 Projects</button>
-    <button class="nav-tab" onclick="go('resume')" id="tab-resume">✒ Resume</button>
-  </div>
+    <main class="board">
+      <div class="tape-top"></div>
 
-  <!-- Board -->
-  <div class="board">
+      <div class="about-grid">
 
-    <!-- ══ ABOUT ══ -->
-    <div class="page active" id="page-about">
-      <div class="tape h" style="position:absolute;top:0;left:0;right:0;height:12px;border-radius:0;opacity:0.6;"></div>
-
-      <div class="deco" style="top:40px;right:18px;transform:rotate(15deg);">🌸</div>
-      <div class="deco" style="bottom:60px;right:30px;transform:rotate(-8deg);">🍃</div>
-      <div class="deco" style="bottom:80px;left:10px;transform:rotate(5deg);">✿</div>
-
-      <div class="about-layout" style="padding-top:16px;">
-
-        <!-- Left col -->
+        <!-- Left: Polaroid stack -->
+        <!-- Replace the .photo-placeholder divs with <img> tags once you have photos -->
         <div class="about-left">
           <div class="polaroid pol1">
-            <div class="pol-tape" style="top:-6px;left:30px;transform:rotate(-6deg);width:40px;background:repeating-linear-gradient(90deg,rgba(212,132,154,0.65) 0,rgba(212,132,154,0.65) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);"></div>
-            <div class="polaroid-img" style="width:106px;height:106px;font-size:38px;">🌿</div>
-            <span class="polaroid-cap">spring '25</span>
+            <div class="pol-tape" style="top:-6px;left:28px;transform:rotate(-5deg);width:42px;background:repeating-linear-gradient(90deg,rgba(201,122,144,0.6) 0,rgba(201,122,144,0.6) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);"></div>
+            <div class="polaroid-img" style="width:112px;height:112px;">
+              <!-- Replace with: <img src="photos/photo1.jpg" alt="Description"> -->
+              <div class="photo-placeholder"><span>your photo here</span></div>
+            </div>
+            <span class="polaroid-cap">caption here</span>
           </div>
 
           <div class="polaroid pol2">
-            <div class="pol-tape" style="top:-6px;left:24px;transform:rotate(4deg);width:40px;background:repeating-linear-gradient(90deg,rgba(168,197,160,0.7) 0,rgba(168,197,160,0.7) 8px,rgba(245,221,228,0.7) 8px,rgba(245,221,228,0.7) 16px);"></div>
-            <div class="polaroid-img" style="width:96px;height:96px;font-size:34px;">☕</div>
-            <span class="polaroid-cap">my desk ♡</span>
+            <div class="pol-tape" style="top:-6px;left:20px;transform:rotate(4deg);width:40px;background:repeating-linear-gradient(90deg,rgba(122,158,126,0.65) 0,rgba(122,158,126,0.65) 8px,rgba(232,176,192,0.55) 8px,rgba(232,176,192,0.55) 16px);"></div>
+            <div class="polaroid-img" style="width:98px;height:98px;">
+              <!-- Replace with: <img src="photos/photo2.jpg" alt="Description"> -->
+              <div class="photo-placeholder"><span>your photo here</span></div>
+            </div>
+            <span class="polaroid-cap">caption here</span>
           </div>
 
           <div class="polaroid pol3">
-            <div class="pol-tape" style="top:-6px;left:18px;transform:rotate(-3deg);width:38px;background:repeating-linear-gradient(45deg,rgba(212,132,154,0.4) 0,rgba(212,132,154,0.4) 5px,rgba(245,240,232,0.8) 5px,rgba(245,240,232,0.8) 10px);"></div>
-            <div class="polaroid-img" style="width:86px;height:80px;font-size:30px;">🌸</div>
-            <span class="polaroid-cap">garden walk</span>
-          </div>
-
-          <div class="social-stack">
-            <div class="tape m" style="position:relative;height:10px;width:130px;margin-bottom:4px;border-radius:2px;opacity:0.7;"></div>
-            <button class="soc-btn"><span class="soc-icon" style="background:#1a1a1a;">𝕏</span> twitter / x</button>
-            <button class="soc-btn"><span class="soc-icon" style="background:var(--pink);">◎</span> instagram</button>
-            <button class="soc-btn"><span class="soc-icon" style="background:var(--matcha);">t</span> tumblr</button>
-            <button class="soc-btn"><span class="soc-icon" style="background:var(--brown);">✉</span> email me</button>
+            <div class="pol-tape" style="top:-6px;left:14px;transform:rotate(-3deg);width:38px;background:repeating-linear-gradient(45deg,rgba(201,122,144,0.38) 0,rgba(201,122,144,0.38) 5px,rgba(245,240,232,0.75) 5px,rgba(245,240,232,0.75) 10px);"></div>
+            <div class="polaroid-img" style="width:88px;height:80px;">
+              <!-- Replace with: <img src="photos/photo3.jpg" alt="Description"> -->
+              <div class="photo-placeholder"><span>your photo here</span></div>
+            </div>
+            <span class="polaroid-cap">caption here</span>
           </div>
         </div>
 
-        <!-- Right col -->
+        <!-- Right: Info -->
         <div class="about-right">
-          <div class="name-block">
-            <div class="clip" style="top:-14px;right:20px;border-color:var(--cream4);"></div>
-            <div class="tape p" style="position:absolute;top:-7px;left:12px;width:50px;transform:rotate(-3deg);height:14px;border-radius:2px;"></div>
-            <h1>Amulya Medarametla ♡</h1>
-            <p class="role">Chess Coach · Tennis Player · Aspiring Lawyer</p>
-            <p>Hello! I'm a <em style="color:var(--pink4)">curious creative</em> who finds beauty where art meets technology. I craft digital experiences that feel warm and a little bit whimsical.</p>
-            <div class="status-note"><span class="blink"></span> open to work!</div>
+          <div class="name-card">
+            <div class="clip" style="top:-13px;right:22px;"></div>
+            <div class="pol-tape" style="position:absolute;top:-6px;left:16px;width:46px;transform:rotate(-2deg);background:repeating-linear-gradient(90deg,rgba(201,122,144,0.6) 0,rgba(201,122,144,0.6) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);border-radius:2px;"></div>
+
+            <h1>Your Name</h1>
+            <p class="role">Designer &amp; Developer</p>
+            <p class="bio">
+              Write two or three sentences about yourself here. Who are you, what do you
+              study or work on, and what kind of work are you drawn to? Be specific
+              and genuine — this is the first thing people read.
+            </p>
+            <div class="status-badge">
+              <span class="blink"></span> Open to opportunities
+            </div>
           </div>
 
-          <div class="quote-strip">
-            "There is no friend as loyal as a book."
-            <span style="display:block;font-size:11px;font-family:'IM Fell English',serif;margin-top:3px;color:var(--brown2);">— a favourite thought</span>
+          <div class="quote-block" style="transform:rotate(-0.3deg);">
+            Replace this with a quote that means something to you, or remove it entirely.
+            <cite>— Author Name</cite>
           </div>
 
-          <div class="sticky sticky-float" style="margin-top:8px;">
-            <b>things I love ✦</b><br>
-            bookbinding · matcha · film photography<br>
-            pressed florals · vintage maps · linen
+          <div class="sticky sticky-note">
+            <strong>A few things about me</strong><br>
+            Add two or three personal details here — hobbies, interests,
+            fun facts. Keep it short and human.
           </div>
 
           <div class="stat-row">
             <div class="stat-box">
               <div class="stat-num" style="color:var(--matcha4);">3+</div>
-              <div class="stat-label">years creating</div>
+              <div class="stat-label">years studying</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num" style="color:var(--pink4);">12</div>
-              <div class="stat-label">projects shipped</div>
+              <div class="stat-num" style="color:var(--pink4);">2</div>
+              <div class="stat-label">projects</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num" style="color:var(--brown);">∞</div>
-              <div class="stat-label">cups of matcha</div>
+              <div class="stat-num" style="color:var(--brown);">1</div>
+              <div class="stat-label">degree in progress</div>
             </div>
           </div>
 
-          <div class="tags-block" style="margin-top:10px;">
-            <p class="tag-label">✿ interests</p>
-            <div class="tags">
-              <span class="tag m">bookbinding</span>
-              <span class="tag p">matcha</span>
-              <span class="tag c">typography</span>
-              <span class="tag m">pressed florals</span>
-              <span class="tag p">film photography</span>
-              <span class="tag c">slow mornings</span>
-              <span class="tag m">hand lettering</span>
+          <div class="tags-section">
+            <p class="tags-label">Skills &amp; Interests</p>
+            <div class="tags-row">
+              <span class="tag m">UI Design</span>
+              <span class="tag p">Typography</span>
+              <span class="tag c">HTML / CSS</span>
+              <span class="tag m">Photography</span>
+              <span class="tag p">Research</span>
+              <span class="tag c">Illustration</span>
+              <!-- Add or swap tags to match your actual skills -->
             </div>
           </div>
+
         </div>
       </div>
 
-      <div class="tape stripe" style="position:absolute;bottom:0;left:0;right:0;height:10px;border-radius:0;opacity:0.55;"></div>
-    </div>
+      <div class="tape-bottom"></div>
+    </main>
 
-    <!-- ══ PROJECTS ══ -->
-    <div class="page" id="page-projects">
-      <div class="tape h" style="position:absolute;top:0;left:0;right:0;height:12px;border-radius:0;opacity:0.6;"></div>
-
-      <div style="display:flex;align-items:center;gap:10px;margin:16px 0 10px;padding:0 4px;">
-        <span class="stamp" style="color:var(--matcha4);">my work</span>
-        <span style="font-family:'Caveat',cursive;font-size:14px;color:var(--brown2);">✦ things I've made and loved</span>
-        <div class="sticker" style="position:relative;right:auto;left:auto;top:auto;background:var(--matcha3);border-color:var(--matcha2);">🌿</div>
-      </div>
-
-      <div class="proj-grid-wrap">
-        <div class="proj-card">
-          <div class="proj-thumb pt1">🌿</div>
-          <div class="proj-body">
-            <p class="proj-cat">ux design</p>
-            <h3 class="proj-name">Botanica — Plant Care</h3>
-            <p class="proj-desc">A gentle app for remembering to water your plants. Soft reminders, illustrated portraits.</p>
-            <div class="chips"><span class="chip">Figma</span><span class="chip">React Native</span></div>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-thumb pt2">📖</div>
-          <div class="proj-body">
-            <p class="proj-cat">web design</p>
-            <h3 class="proj-name">Commonplace</h3>
-            <p class="proj-desc">A digital commonplace book for quotes and marginalia from books you love.</p>
-            <div class="chips"><span class="chip">Next.js</span><span class="chip">Notion API</span></div>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-thumb pt3">🗺</div>
-          <div class="proj-body">
-            <p class="proj-cat">data viz</p>
-            <h3 class="proj-name">Wanderlog</h3>
-            <p class="proj-desc">Interactive travel map with handwritten annotations and polaroid pins.</p>
-            <div class="chips"><span class="chip">D3.js</span><span class="chip">Mapbox</span></div>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-thumb pt4">🫖</div>
-          <div class="proj-body">
-            <p class="proj-cat">brand identity</p>
-            <h3 class="proj-name">Steep — Tea Brand</h3>
-            <p class="proj-desc">Brand identity and packaging for a small-batch tea company.</p>
-            <div class="chips"><span class="chip">Illustrator</span><span class="chip">Packaging</span></div>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-thumb pt5">✉</div>
-          <div class="proj-body">
-            <p class="proj-cat">★ featured · newsletter</p>
-            <h3 class="proj-name">Marginalia — Weekly Letter</h3>
-            <p class="proj-desc">Curated weekly email of slow reads, discoveries, and small beautiful things from the world.</p>
-            <div class="chips"><span class="chip">Email HTML</span><span class="chip">Substack</span><span class="chip">Editorial</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tape stripe" style="position:absolute;bottom:0;left:0;right:0;height:10px;border-radius:0;opacity:0.55;"></div>
-    </div>
-
-    <!-- ══ RESUME ══ -->
-    <div class="page" id="page-resume">
-      <div class="tape h" style="position:absolute;top:0;left:0;right:0;height:12px;border-radius:0;opacity:0.6;"></div>
-
-      <div style="padding:16px 4px 4px;">
-        <div class="res-top-paper">
-          <div class="tape p" style="position:absolute;top:-7px;right:30px;width:44px;height:14px;transform:rotate(3deg);border-radius:2px;"></div>
-          <div class="res-name">Your Name</div>
-          <div class="res-role">Designer & Developer</div>
-          <div class="res-meta">
-            <span>✉ yourname@email.com</span>
-            <span>🌐 yourwebsite.com</span>
-            <span>📍 City, Country</span>
-          </div>
-        </div>
-
-        <div style="margin-bottom:10px;">
-          <h3 class="res-sec-label">✦ experience</h3>
-          <div class="res-entry">
-            <div class="res-entry-top">
-              <div><p class="res-etitle">Senior Product Designer</p><p class="res-eorg">Studio Verdant · Full-time</p></div>
-              <p class="res-edate">2023 — present</p>
-            </div>
-            <ul class="res-ebullets">
-              <li>Led end-to-end design of a consumer wellbeing app from research to launch</li>
-              <li>Built a cross-functional design system used across 3 products</li>
-              <li>Conducted 40+ user interviews to shape product direction</li>
-            </ul>
-          </div>
-          <div class="res-entry">
-            <div class="res-entry-top">
-              <div><p class="res-etitle">UX Designer</p><p class="res-eorg">Bloom Creative Agency · Contract</p></div>
-              <p class="res-edate">2021 — 2023</p>
-            </div>
-            <ul class="res-ebullets">
-              <li>Designed identities and digital experiences for 8 lifestyle & culture clients</li>
-            </ul>
-          </div>
-          <div class="res-entry">
-            <div class="res-entry-top">
-              <div><p class="res-etitle">Design Intern</p><p class="res-eorg">Paperweight Publishing</p></div>
-              <p class="res-edate">Summer 2020</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-bottom:10px;">
-          <h3 class="res-sec-label">✦ education</h3>
-          <div class="res-entry">
-            <div class="res-entry-top">
-              <div><p class="res-etitle">BA Graphic Design & Visual Communication</p><p class="res-eorg">University of the Arts</p></div>
-              <p class="res-edate">2017 — 2021</p>
-            </div>
-            <ul class="res-ebullets"><li>First class honours · Design Society president</li></ul>
-          </div>
-        </div>
-
-        <div style="margin-bottom:10px;">
-          <h3 class="res-sec-label">✦ skills</h3>
-          <div class="skills-cloud">
-            <span class="sk m">Figma</span><span class="sk m">Illustrator</span><span class="sk m">After Effects</span>
-            <span class="sk p">React</span><span class="sk p">Next.js</span><span class="sk p">CSS / HTML</span>
-            <span class="sk c">User Research</span><span class="sk c">Design Systems</span><span class="sk c">Brand Identity</span>
-          </div>
-        </div>
-
-        <button class="dl-btn">↓ download résumé PDF</button>
-      </div>
-
-      <div class="tape stripe" style="position:absolute;bottom:0;left:0;right:0;height:10px;border-radius:0;opacity:0.55;"></div>
-    </div>
-
+    <footer class="site-footer">Your Name &mdash; Portfolio 2026</footer>
   </div>
-
-  <div class="footer">made with ♡ · your name here · 2026</div>
-</div>
-
-<script>
-function go(name){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  document.getElementById('tab-'+name).classList.add('active');
-}
-document.querySelectorAll('.tag').forEach((t,i)=>{
-  t.style.animationDelay=(i*0.06)+'s';
-  t.style.animation='tagIn 0.4s ease backwards';
-});
-</script>
-
 </body>
 </html>
