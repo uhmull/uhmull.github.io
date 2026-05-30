@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name — Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-intro {
+      padding-top: 14px;
+      margin-bottom: 22px;
+    }
+
+    .page-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--ink); margin-bottom: 5px;
+    }
+
+    .page-intro p {
+      font-family: 'Lora', serif;
+      font-size: 14px; color: var(--ink2);
+      line-height: 1.7;
+    }
+
+    /* ── Project entry ── */
+    .project-entry {
+      margin-bottom: 30px;
+    }
+
+    .project-entry:nth-child(1) { animation: fadeUp 0.45s 0.05s ease both; }
+    .project-entry:nth-child(2) { animation: fadeUp 0.45s 0.15s ease both; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .project-paper {
+      background: white;
+      border: 1.5px solid var(--cream3);
+      border-radius: 4px;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: visible;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .project-entry:nth-child(odd)  .project-paper { transform: rotate(-0.4deg); }
+    .project-entry:nth-child(even) .project-paper { transform: rotate(0.35deg); }
+    .project-paper:hover { transform: rotate(0deg) translateY(-2px); box-shadow: 4px 8px 20px rgba(0,0,0,0.11); }
+
+    /* Tape accent at top */
+    .project-paper::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      width: 52px; height: 14px;
+      border-radius: 0 0 3px 3px;
+      z-index: 2;
+    }
+    .project-entry:nth-child(odd)  .project-paper::before {
+      background: repeating-linear-gradient(90deg, rgba(122,158,126,0.65) 0, rgba(122,158,126,0.65) 10px, rgba(232,176,192,0.55) 10px, rgba(232,176,192,0.55) 20px);
+    }
+    .project-entry:nth-child(even) .project-paper::before {
+      background: repeating-linear-gradient(90deg, rgba(201,122,144,0.6) 0, rgba(201,122,144,0.6) 10px, rgba(245,240,232,0.8) 10px, rgba(245,240,232,0.8) 20px);
+    }
+
+    /* Project header */
+    .project-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 22px 0;
+    }
+
+    .project-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px; font-weight: 700;
+      line-height: 1; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .project-entry:nth-child(1) .project-number { color: var(--matcha2); }
+    .project-entry:nth-child(2) .project-number { color: var(--pink2); }
+
+    .project-meta { flex: 1; }
+
+    .project-category {
+      font-family: 'Lora', serif;
+      font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--matcha);
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--ink); line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .project-subtitle {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 14px; color: var(--brown2);
+      margin-bottom: 10px;
+    }
+
+    .chips-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    /* Description block */
+    .project-body {
+      padding: 14px 22px 0;
+      border-top: 1px solid var(--cream2);
+      margin-top: 14px;
+    }
+
+    .project-desc {
+      font-family: 'Lora', serif;
+      font-size: 14px; line-height: 1.82;
+      color: var(--ink2);
+      margin-bottom: 12px;
+    }
+
+    .project-highlights {
+      list-style: none;
+      margin-bottom: 4px;
+    }
+
+    .project-highlights li {
+      font-family: 'Lora', serif;
+      font-size: 13px; color: var(--ink2);
+      line-height: 1.75;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .project-highlights li::before {
+      content: '';
+      position: absolute; left: 3px; top: 8px;
+      width: 6px; height: 6px;
+      border: 1.5px solid var(--pink);
+      border-radius: 1px;
+      transform: rotate(45deg);
+    }
+
+    /* Video section */
+    .video-section {
+      padding: 16px 22px 22px;
+    }
+
+    .video-label {
+      font-family: 'Lora', serif;
+      font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brown2);
+      margin-bottom: 9px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .video-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px; height: 1.5px; background: var(--pink);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--cream2);
+      border: 1.5px solid var(--cream3);
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* Placeholder shown before a real video is added */
+    .video-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+    }
+    .project-entry:nth-child(1) .video-placeholder {
+      background: linear-gradient(135deg, var(--matcha3) 0%, var(--cream2) 100%);
+    }
+    .project-entry:nth-child(2) .video-placeholder {
+      background: linear-gradient(135deg, var(--pink3) 0%, var(--cream2) 100%);
+    }
+
+    .play-circle {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .play-triangle {
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 18px solid var(--brown2);
+      margin-left: 4px;
+    }
+
+    .video-placeholder p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 13px; color: var(--ink2);
+    }
+
+    /* Divider between projects */
+    .project-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin: 4px 0 20px;
+      opacity: 0.45;
+    }
+    .project-divider::before,
+    .project-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--cream4);
+    }
+    .project-divider-mark {
+      width: 8px; height: 8px;
+      border: 1.5px solid var(--pink);
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+
+    <header class="site-header">
+      <div class="pin"></div>
+      <div class="header-paper">
+        <div class="header-tape left"></div>
+        <div class="header-tape right"></div>
+        <h1 class="site-name">Your Name</h1>
+        <p class="site-tagline">Designer &amp; Developer</p>
+      </div>
+    </header>
+
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">About</a>
+      <a href="projects.html" class="nav-tab active">Projects</a>
+      <a href="resume.html" class="nav-tab">Resume</a>
+    </nav>
+
+    <main class="board">
+      <div class="tape-top"></div>
+
+      <div class="page-intro">
+        <h2>Selected Projects</h2>
+        <p>A look at two projects I have worked on — what they are, how I built them, and what I learned.</p>
+      </div>
+
+      <!-- ══════════ PROJECT 1 ══════════ -->
+      <article class="project-entry">
+        <div class="project-paper">
+          <div class="project-head">
+            <div class="project-number">01</div>
+            <div class="project-meta">
+              <p class="project-category">Web Design &amp; Development</p>
+              <h3 class="project-title">Your First Project Title</h3>
+              <p class="project-subtitle">A short, honest description of what this project is</p>
+              <div class="chips-row">
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">JavaScript</span>
+                <!-- Update to your actual tech stack -->
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <p class="project-desc">
+              Write two to three sentences describing this project. What does it do?
+              Who is it for? What problem does it solve? Be clear and specific —
+              avoid vague language like "innovative" or "user-friendly."
+            </p>
+            <ul class="project-highlights">
+              <li>Describe one key feature or technical decision you made</li>
+              <li>Mention something you built that you are proud of</li>
+              <li>Include a challenge you overcame or something you learned</li>
+            </ul>
+          </div>
+
+          <div class="video-section">
+            <p class="video-label">Demo Video</p>
+            <div class="video-wrapper">
+              <!--
+                YOUTUBE: Replace the placeholder div below with:
+                <iframe
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+
+                LOCAL VIDEO FILE (e.g. recorded screen capture):
+                <video controls>
+                  <source src="videos/project1.mp4" type="video/mp4">
+                </video>
+
+                Delete the placeholder div once you add your video.
+              -->
+              <div class="video-placeholder">
+                <div class="play-circle"><div class="play-triangle"></div></div>
+                <p>Add your demo video here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="project-divider"><div class="project-divider-mark"></div></div>
+
+      <!-- ══════════ PROJECT 2 ══════════ -->
+      <article class="project-entry">
+        <div class="project-paper">
+          <div class="project-head">
+            <div class="project-number">02</div>
+            <div class="project-meta">
+              <p class="project-category">UX Design &amp; Research</p>
+              <h3 class="project-title">Your Second Project Title</h3>
+              <p class="project-subtitle">A short, honest description of what this project is</p>
+              <div class="chips-row">
+                <span class="chip">Figma</span>
+                <span class="chip">User Research</span>
+                <span class="chip">Prototyping</span>
+                <!-- Update to your actual tech stack -->
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <p class="project-desc">
+              Write two to three sentences describing this project. What does it do?
+              Who is it for? What problem does it solve? Be clear and specific —
+              avoid vague language like "innovative" or "user-friendly."
+            </p>
+            <ul class="project-highlights">
+              <li>Describe one key feature or technical decision you made</li>
+              <li>Mention something you built that you are proud of</li>
+              <li>Include a challenge you overcame or something you learned</li>
+            </ul>
+          </div>
+
+          <div class="video-section">
+            <p class="video-label">Demo Video</p>
+            <div class="video-wrapper">
+              <!--
+                YOUTUBE:
+                <iframe
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+
+                LOCAL VIDEO:
+                <video controls>
+                  <source src="videos/project2.mp4" type="video/mp4">
+                </video>
+
+                Delete the placeholder div once you add your video.
+              -->
+              <div class="video-placeholder">
+                <div class="play-circle"><div class="play-triangle"></div></div>
+                <p>Add your demo video here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="tape-bottom"></div>
+    </main>
+
+    <footer class="site-footer">Your Name &mdash; Portfolio 2026</footer>
+  </div>
+</body>
+</html>
