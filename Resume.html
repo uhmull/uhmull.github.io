@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name — Resume</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-intro {
+      padding-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .page-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--ink); margin-bottom: 5px;
+    }
+
+    .page-intro p {
+      font-family: 'Lora', serif;
+      font-size: 14px; color: var(--ink2);
+      line-height: 1.7;
+    }
+
+    /* ── Resume image display ── */
+    .resume-frame {
+      position: relative;
+      background: white;
+      border: 1.5px solid var(--cream3);
+      border-radius: 4px;
+      padding: 10px 10px 28px;
+      box-shadow: 3px 5px 14px rgba(0,0,0,0.1), 0 1px 0 rgba(0,0,0,0.04);
+      transform: rotate(-0.3deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .resume-frame:hover {
+      transform: rotate(0deg);
+      box-shadow: 5px 8px 22px rgba(0,0,0,0.13);
+    }
+
+    /* Washi tape on top of resume polaroid-style */
+    .resume-frame::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 15px;
+      border-radius: 0 0 3px 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(122,158,126,0.65) 0, rgba(122,158,126,0.65) 10px,
+        rgba(232,176,192,0.55) 10px, rgba(232,176,192,0.55) 20px
+      );
+      z-index: 2;
+    }
+
+    /* Paper clips on corners */
+    .resume-frame .clip-tl {
+      position: absolute;
+      top: -12px; left: 18px;
+      width: 13px; height: 22px;
+      border: 2.5px solid var(--cream4);
+      border-radius: 6px 6px 0 0;
+      border-bottom: none;
+      box-shadow: inset 0 0 0 1.5px var(--cream3);
+    }
+    .resume-frame .clip-tr {
+      position: absolute;
+      top: -12px; right: 18px;
+      width: 13px; height: 22px;
+      border: 2.5px solid var(--cream4);
+      border-radius: 6px 6px 0 0;
+      border-bottom: none;
+      box-shadow: inset 0 0 0 1.5px var(--cream3);
+    }
+
+    .resume-img-wrap {
+      width: 100%;
+      position: relative;
+    }
+
+    .resume-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* Shown only if no image has been added yet */
+    .resume-placeholder {
+      width: 100%;
+      aspect-ratio: 8.5 / 11; /* US Letter proportions */
+      background: var(--cream2);
+      border: 1.5px dashed var(--cream4);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .resume-placeholder .icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--cream3);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .resume-placeholder .icon svg {
+      width: 20px; height: 20px;
+      fill: none;
+      stroke: var(--brown2);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .resume-placeholder p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 13px; color: var(--brown2);
+    }
+
+    .resume-placeholder code {
+      font-family: monospace;
+      font-size: 12px;
+      background: var(--cream3);
+      padding: 2px 8px; border-radius: 3px;
+      color: var(--ink2);
+    }
+
+    /* Caption below the frame */
+    .resume-caption {
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 12px; color: var(--brown2);
+      margin-top: 10px;
+    }
+
+    /* Contact row */
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      padding: 14px;
+      background: var(--cream2);
+      border: 1.5px solid var(--cream3);
+      border-radius: 4px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .contact-label {
+      font-family: 'Lora', serif;
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brown2);
+    }
+
+    .contact-value {
+      font-family: 'Lora', serif;
+      font-size: 14px; color: var(--ink);
+      text-decoration: none;
+    }
+
+    a.contact-value:hover { color: var(--pink4); }
+  </style>
+</head>
+<body>
+  <div class="site">
+
+    <header class="site-header">
+      <div class="pin"></div>
+      <div class="header-paper">
+        <div class="header-tape left"></div>
+        <div class="header-tape right"></div>
+        <h1 class="site-name">Your Name</h1>
+        <p class="site-tagline">Designer &amp; Developer</p>
+      </div>
+    </header>
+
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-tab">About</a>
+      <a href="projects.html" class="nav-tab">Projects</a>
+      <a href="resume.html" class="nav-tab active">Resume</a>
+    </nav>
+
+    <main class="board">
+      <div class="tape-top"></div>
+
+      <div class="page-intro">
+        <h2>Resume</h2>
+        <p>My current resume. Feel free to reach out via email with any questions.</p>
+      </div>
+
+      <!-- Resume displayed as an image -->
+      <div class="resume-frame">
+        <div class="clip-tl"></div>
+        <div class="clip-tr"></div>
+
+        <div class="resume-img-wrap">
+          <!--
+            HOW TO ADD YOUR RESUME IMAGE:
+            1. Save your resume as a .jpg or .png (screenshot or export from PDF)
+            2. Name it "resume.jpg" (or "resume.png")
+            3. Put it in the same folder as this HTML file
+            4. Delete the .resume-placeholder div below
+            5. Uncomment this line:
+
+            <img src="resume.jpg" alt="Resume of Your Name">
+          -->
+
+          <!-- DELETE THIS BLOCK once you have added your resume image -->
+          <div class="resume-placeholder">
+            <div class="icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                <line x1="8" y1="8" x2="16" y2="8"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+                <line x1="8" y1="16" x2="12" y2="16"/>
+              </svg>
+            </div>
+            <p>Add your resume image here</p>
+            <code>resume.jpg</code>
+          </div>
+          <!-- END DELETE BLOCK -->
+
+        </div>
+      </div>
+
+      <p class="resume-caption">Your Name &mdash; Resume 2026</p>
+
+      <!-- Contact info -->
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:your@email.com" class="contact-value">your@email.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">City, State</span>
+        </div>
+        <!-- Add more contact fields as needed, or remove ones you don't want -->
+      </div>
+
+      <div class="tape-bottom"></div>
+    </main>
+
+    <footer class="site-footer">Your Name &mdash; Portfolio 2026</footer>
+  </div>
+</body>
+</html>
