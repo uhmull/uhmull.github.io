@@ -1,260 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .about-grid {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 0 22px;
-      padding-top: 16px;
-    }
-
-    /* ── Left column: stacked polaroids ── */
-    .about-left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .pol1 {
-      transform: rotate(-2.5deg);
-      margin-left: 5px;
-      width: 126px;
-      z-index: 3; position: relative;
-    }
-    .pol1 .polaroid-img { width: 112px; height: 112px; font-size: 0; }
-
-    .pol2 {
-      transform: rotate(2deg);
-      margin-top: -10px; margin-left: 13px;
-      width: 112px;
-      z-index: 2; position: relative;
-    }
-    .pol2 .polaroid-img { width: 98px; height: 98px; font-size: 0; }
-
-    .pol3 {
-      transform: rotate(-1.2deg);
-      margin-top: -8px; margin-left: 4px;
-      width: 102px;
-      z-index: 1; position: relative;
-    }
-    .pol3 .polaroid-img { width: 88px; height: 80px; font-size: 0; }
-
-    .polaroid:hover { transform: rotate(0deg) scale(1.05) !important; }
-
-    /* ── Right column ── */
-    .about-right { position: relative; }
-
-    .name-card {
-      background: white;
-      border: 1.5px solid var(--cream3);
-      border-radius: 4px;
-      padding: 14px 16px 13px;
-      box-shadow: 2px 3px 0 var(--cream3);
-      transform: rotate(0.25deg);
-      position: relative;
-      margin-bottom: 10px;
-    }
-
-    .name-card h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700;
-      color: var(--ink); line-height: 1.1;
-    }
-
-    .name-card .role {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 15px; color: var(--pink);
-      margin-top: 5px;
-    }
-
-    .name-card .bio {
-      font-family: 'Lora', serif;
-      font-size: 14px; line-height: 1.8;
-      color: var(--ink2); margin-top: 10px;
-    }
-
-    .status-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--matcha3);
-      border: 1.5px solid var(--matcha2);
-      border-radius: 20px;
-      padding: 3px 13px;
-      font-family: 'Lora', serif;
-      font-size: 13px; color: var(--matcha4);
-      margin-top: 11px;
-    }
-    .blink {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--matcha);
-      animation: blink 1.6s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 7px;
-      margin-top: 10px;
-    }
-    .stat-box:nth-child(1) { transform: rotate(-0.8deg); }
-    .stat-box:nth-child(2) { transform: rotate(0.5deg); }
-    .stat-box:nth-child(3) { transform: rotate(-0.3deg); }
-
-    .tags-section { margin-top: 12px; }
-    .tags-label {
-      font-family: 'Lora', serif;
-      font-size: 12px; letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--brown2); margin-bottom: 6px;
-    }
-    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    .sticky-note {
-      transform: rotate(1.8deg);
-      margin-top: 10px;
-    }
-
-    /* Photo placeholder styling */
-    .photo-placeholder {
-      width: 100%; height: 100%;
-      background: var(--cream2);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 4px;
-    }
-    .photo-placeholder span {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 11px; color: var(--brown2);
-      text-align: center; padding: 0 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | AP CSA Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="site">
 
-    <header class="site-header">
-      <div class="pin"></div>
-      <div class="header-paper">
-        <div class="header-tape left"></div>
-        <div class="header-tape right"></div>
-        <h1 class="site-name">Your Name</h1>
-        <p class="site-tagline">Designer &amp; Developer</p>
-      </div>
+    <header class="banner">
+        <h1>AP Computer Science A Portfolio</h1>
+        <p>Built with efficiency and assisted by AI generation tools.</p>
     </header>
 
-    <nav class="nav-tabs">
-      <a href="index.html" class="nav-tab active">About</a>
-      <a href="projects.html" class="nav-tab">Projects</a>
-      <a href="resume.html" class="nav-tab">Resume</a>
+    <nav class="nav-container">
+        <a href="index.html" class="nav-btn active">About Me</a>
+        <a href="resume.html" class="nav-btn">Resume</a>
+        <a href="projects.html" class="nav-btn">Projects</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
     </nav>
 
-    <main class="board">
-      <div class="tape-top"></div>
-
-      <div class="about-grid">
-
-        <!-- Left: Polaroid stack -->
-        <!-- Replace the .photo-placeholder divs with <img> tags once you have photos -->
-        <div class="about-left">
-          <div class="polaroid pol1">
-            <div class="pol-tape" style="top:-6px;left:28px;transform:rotate(-5deg);width:42px;background:repeating-linear-gradient(90deg,rgba(201,122,144,0.6) 0,rgba(201,122,144,0.6) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);"></div>
-            <div class="polaroid-img" style="width:112px;height:112px;">
-              <!-- Replace with: <img src="photos/photo1.jpg" alt="Description"> -->
-              <div class="photo-placeholder"><span>your photo here</span></div>
+    <main class="content-section">
+        <div class="card about-grid">
+            <div>
+                <img src="your-photo.jpg" alt="Profile Picture" class="profile-pic">
             </div>
-            <span class="polaroid-cap">caption here</span>
-          </div>
-
-          <div class="polaroid pol2">
-            <div class="pol-tape" style="top:-6px;left:20px;transform:rotate(4deg);width:40px;background:repeating-linear-gradient(90deg,rgba(122,158,126,0.65) 0,rgba(122,158,126,0.65) 8px,rgba(232,176,192,0.55) 8px,rgba(232,176,192,0.55) 16px);"></div>
-            <div class="polaroid-img" style="width:98px;height:98px;">
-              <!-- Replace with: <img src="photos/photo2.jpg" alt="Description"> -->
-              <div class="photo-placeholder"><span>your photo here</span></div>
+            <div>
+                <h2>Hello, I'm [Your Name]</h2>
+                <p>Welcome to my AP Computer Science A portfolio. I am a high school student and developer currently learning the fundamentals of object-oriented programming design using Java.</p>
+                <p style="margin-top: 15px;">This portfolio highlights the logical frameworks, debugging structures, and implementation models I've designed over the course of the year. I enjoy tackling abstract problem-solving challenges and translating structural logic puzzles into working application solutions.</p>
             </div>
-            <span class="polaroid-cap">caption here</span>
-          </div>
-
-          <div class="polaroid pol3">
-            <div class="pol-tape" style="top:-6px;left:14px;transform:rotate(-3deg);width:38px;background:repeating-linear-gradient(45deg,rgba(201,122,144,0.38) 0,rgba(201,122,144,0.38) 5px,rgba(245,240,232,0.75) 5px,rgba(245,240,232,0.75) 10px);"></div>
-            <div class="polaroid-img" style="width:88px;height:80px;">
-              <!-- Replace with: <img src="photos/photo3.jpg" alt="Description"> -->
-              <div class="photo-placeholder"><span>your photo here</span></div>
-            </div>
-            <span class="polaroid-cap">caption here</span>
-          </div>
         </div>
-
-        <!-- Right: Info -->
-        <div class="about-right">
-          <div class="name-card">
-            <div class="clip" style="top:-13px;right:22px;"></div>
-            <div class="pol-tape" style="position:absolute;top:-6px;left:16px;width:46px;transform:rotate(-2deg);background:repeating-linear-gradient(90deg,rgba(201,122,144,0.6) 0,rgba(201,122,144,0.6) 8px,rgba(245,240,232,0.8) 8px,rgba(245,240,232,0.8) 16px);border-radius:2px;"></div>
-
-            <h1>Your Name</h1>
-            <p class="role">Designer &amp; Developer</p>
-            <p class="bio">
-              Write two or three sentences about yourself here. Who are you, what do you
-              study or work on, and what kind of work are you drawn to? Be specific
-              and genuine — this is the first thing people read.
-            </p>
-            <div class="status-badge">
-              <span class="blink"></span> Open to opportunities
-            </div>
-          </div>
-
-          <div class="quote-block" style="transform:rotate(-0.3deg);">
-            Replace this with a quote that means something to you, or remove it entirely.
-            <cite>— Author Name</cite>
-          </div>
-
-          <div class="sticky sticky-note">
-            <strong>A few things about me</strong><br>
-            Add two or three personal details here — hobbies, interests,
-            fun facts. Keep it short and human.
-          </div>
-
-          <div class="stat-row">
-            <div class="stat-box">
-              <div class="stat-num" style="color:var(--matcha4);">3+</div>
-              <div class="stat-label">years studying</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num" style="color:var(--pink4);">2</div>
-              <div class="stat-label">projects</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num" style="color:var(--brown);">1</div>
-              <div class="stat-label">degree in progress</div>
-            </div>
-          </div>
-
-          <div class="tags-section">
-            <p class="tags-label">Skills &amp; Interests</p>
-            <div class="tags-row">
-              <span class="tag m">UI Design</span>
-              <span class="tag p">Typography</span>
-              <span class="tag c">HTML / CSS</span>
-              <span class="tag m">Photography</span>
-              <span class="tag p">Research</span>
-              <span class="tag c">Illustration</span>
-              <!-- Add or swap tags to match your actual skills -->
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="tape-bottom"></div>
     </main>
 
-    <footer class="site-footer">Your Name &mdash; Portfolio 2026</footer>
-  </div>
 </body>
 </html>
